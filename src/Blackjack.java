@@ -28,8 +28,9 @@ public class Blackjack extends JFrame implements ActionListener
 		
 		int playerNum;
 		JLabel player = new JLabel("Player: " + playerNum);
+		JLabel dealer = new JLabel("Dealer");
 		
-		
+		Font dealerLabel = new Font(Font.SANS_SERIF, Font.PLAIN, 28);
 		
 	public Blackjack()
 		{
@@ -39,14 +40,25 @@ public class Blackjack extends JFrame implements ActionListener
 			setSize(500, 500);
 			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			
+			
 			eastPnl.setLayout(eastLayout);
+			
+			hit.setFont(dealerLabel);
+			stand.setFont(dealerLabel);
+			fold.setFont(dealerLabel);
+			start.setFont(dealerLabel);
+			
 			eastPnl.add(hit);
 			eastPnl.add(stand);
 			eastPnl.add(fold);
 			eastPnl.add(start);
 			
-			mainPnl.add(eastPnl, BorderLayout.EAST);
+			centerPnl.add(dealer);
+			dealer.setFont(dealerLabel);
 			
+			mainPnl.add(centerPnl, BorderLayout.CENTER);
+			mainPnl.add(eastPnl, BorderLayout.EAST);
+			mainPnl.add(southPnl, BorderLayout.SOUTH);
 			
 			validate();
 		}
