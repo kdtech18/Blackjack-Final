@@ -59,7 +59,13 @@ public class Deck
 		for (String str: shuffledDeck)
 			System.out.println(str);
 		}
-	
+	public void setImageDeck()
+		{
+		for (int i = 0; i < shuffledDeck.size(); i++)
+			{
+				imageDeck.add(new ImageIcon(shuffledDeck.get(i)));
+			}
+		}
 	public static void main(String[] args)
 		{
 			Deck deck1 = new Deck();
