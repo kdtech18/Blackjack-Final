@@ -22,15 +22,15 @@ public class Player
 		}
 	public void addP2Card(ImageIcon card)
 		{
-		p2Cards.add(card);
+			p2Cards.add(card);
 		}
 	public void addP3Card(ImageIcon card)
 		{
-		p3Cards.add(card);
+			p3Cards.add(card);
 		}
 	public void addP4Card(ImageIcon card)
 		{
-		p4Cards.add(card);
+			p4Cards.add(card);
 		}
 	
 	public void setNumPlayers(int numPlayers)

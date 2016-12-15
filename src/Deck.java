@@ -66,6 +66,14 @@ public class Deck
 				imageDeck.add(new ImageIcon(shuffledDeck.get(i)));
 			}
 		}
+	public void setCardValues()
+		{
+		for (int i = 0; i < suit.size(); i++)
+			{
+				
+				
+			}
+		}
 	public static void main(String[] args)
 		{
 			Deck deck1 = new Deck();
