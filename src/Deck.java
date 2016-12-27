@@ -72,11 +72,5 @@ public class Deck
 		
 		
 		}
-	public static void main(String[] args)
-		{
-			Deck deck1 = new Deck();
-			deck1.setDeck();
-			
-			System.out.println(deck1.deck.size());
-		}// end main method
+
 	}
