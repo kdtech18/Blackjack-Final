@@ -17,7 +17,7 @@ public class Deck
 	private ArrayList<String> value = new ArrayList<String>();
 	private ArrayList<String> suit = new ArrayList<String>();
 	
-	private ArrayList<String> cardValues = new ArrayList<String>();
+	private ArrayList<Integer> cardValues = new ArrayList<Integer>();
 	
 	private ArrayList<ImageIcon> imageDeck = new ArrayList<ImageIcon>();
 	
@@ -69,8 +69,23 @@ public class Deck
 		}
 	public void setCardValues()
 		{
-		
+			for (int i = 0; i < deck.size(); i++) {
+				for (int j = 2; j < 9; j++) {
+					if (deck.get(i).substring(0,1).equals(j + "")) {
+						cardValues.add(j);
+					}
+				}
+			}
 		
 		}
 
+		public static void main(String[] args) {
+
+			Deck deck1 = new Deck();
+			deck1.setDeck();
+			deck1.setCardValues();
+			System.out.print(deck1.deck);
+
+				System.out.println(deck1.cardValues);
+		}// end main method
 	}
