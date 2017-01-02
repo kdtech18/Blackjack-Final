@@ -25,6 +25,9 @@ public class Deck
 	
 	public void setDeck()
 		{
+
+
+
 			value.add("a");
 			value.add("j");
 			value.add("k");
@@ -45,6 +48,7 @@ public class Deck
 			for (int b = 0; b < value.size(); b++)
 				{
 					deck.add(value.get(b) + suit.get(a));
+
 				}
 			
 			}
@@ -67,25 +71,12 @@ public class Deck
 				imageDeck.add(new ImageIcon(shuffledDeck.get(i)));
 			}
 		}
-	public void setCardValues()
-		{
-			for (int i = 0; i < deck.size(); i++) {
-				for (int j = 2; j < 9; j++) {
-					if (deck.get(i).substring(0,1).equals(j + "")) {
-						cardValues.add(j);
-					}
-				}
-			}
-		
+	public int getCardValue(String card){
+		if (card.charAt(0) == 'k' ||card.charAt(0) == 'q' || card.charAt(0) == 'j' || card.charAt(0) == 't') {
+			return 10;
+		} else {
+			return card.charAt(0);
 		}
+	}
 
-		public static void main(String[] args) {
-
-			Deck deck1 = new Deck();
-			deck1.setDeck();
-			deck1.setCardValues();
-			System.out.print(deck1.deck);
-
-				System.out.println(deck1.cardValues);
-		}// end main method
 	}
