@@ -40,19 +40,18 @@ public class Blackjack extends JFrame implements ActionListener
 			setSize(500, 500);
 			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			
-			
-			eastPnl.setLayout(eastLayout);
-			
 			hit.setFont(dealerLabel);
 			stand.setFont(dealerLabel);
 			fold.setFont(dealerLabel);
 			start.setFont(dealerLabel);
 			
-			eastPnl.add(hit);
-			eastPnl.add(stand);
-			eastPnl.add(fold);
-			eastPnl.add(start);
-			
+			eastPnl.add(hit, eastLayout);
+			eastPnl.add(stand, eastLayout);
+			eastPnl.add(fold, eastLayout);
+			eastPnl.add(start, eastLayout);
+
+			southPnl.add(player, BorderLayout.WEST);
+
 			centerPnl.add(dealer);
 			dealer.setFont(dealerLabel);
 			
@@ -68,13 +67,7 @@ public class Blackjack extends JFrame implements ActionListener
 			
 		}
 	
-	public void addButtonsEast()
-		{
-		for (int i = 0; i < 4; i++)
-			{
-				
-			}
-		}
+
 	public static void main(String[] args)
 		{
 			Blackjack app = new Blackjack();
