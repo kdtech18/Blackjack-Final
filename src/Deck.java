@@ -74,9 +74,10 @@ public class Deck
 	public int getCardValue(String card){
 		if (card.charAt(0) == 'k' ||card.charAt(0) == 'q' || card.charAt(0) == 'j' || card.charAt(0) == 't') {
 			return 10;
-		} else {
-			return card.charAt(0);
+		} else if (card.charAt(0) != 'a'){
+			return Character.getNumericValue(card.charAt(0));
 		}
+		return 0;
 	}
 
 	}
