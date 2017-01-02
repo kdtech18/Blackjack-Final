@@ -67,7 +67,26 @@ public class Blackjack extends JFrame implements ActionListener
 			
 		}
 	
+	public void BenAceMethod()
+	{
+		/*
+		if (card1 == ace && card2 == faceCard)
+			Blackjack();
+		if (card1 == faceCard && card2 == ace)
+			Blackjack();
+		if (card1 = ace && isWin == false)
+			int sumCard1 = card2 + 1;
+			int sumCard2 = card2 + 11;
+			if (sumCard2 >= 21)
+				trueValue == sumCard2;
+			else
+				trueValue = sumCard1;
+			if (sumCard1 > 21)
+				Bust();
+		if(card2 == ace && isWin == false)
 
+		*/
+	}
 	public static void main(String[] args)
 		{
 			Blackjack app = new Blackjack();
