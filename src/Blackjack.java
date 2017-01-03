@@ -23,6 +23,8 @@ public class Blackjack extends JFrame implements ActionListener
 		BorderLayout southLayout = new BorderLayout();
 		BorderLayout border = new BorderLayout();
 		
+		
+		
 		JButton hit = new JButton("Hit");
 		JButton stand = new JButton("Stand");
 		JButton start = new JButton("Start");
@@ -76,6 +78,9 @@ public class Blackjack extends JFrame implements ActionListener
 			}
 			if(source == hit)
 				{
+					//if(checkWin(15))
+						//next player
+						//save that the player won
 					// give them another card
 					// then add that value to the existing player card value
 					// check if win or bust
@@ -84,6 +89,7 @@ public class Blackjack extends JFrame implements ActionListener
 					// while bust or win is not true
 					
 				}
+			
 		}
 	public boolean checkWin(int cardValue)
 		{
@@ -100,13 +106,7 @@ public class Blackjack extends JFrame implements ActionListener
 				return false;
 		}
 	
-	public void addButtonsEast()
-		{
-		for (int i = 0; i < 4; i++)
-			{
-				
-			}
-		}
+	
 	public void BenAceMethod()
  		{
 			/*
@@ -129,7 +129,11 @@ public class Blackjack extends JFrame implements ActionListener
 		  	}
 	public static void main(String[] args)
 		{
-			Blackjack app = new Blackjack();
+			Object[] options = {"Yes!", "No"};
+			JOptionPane.showOptionDialog(null, "Want to play again?", "Again?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+			
+			
+		
 			
 		}// end main method
 		

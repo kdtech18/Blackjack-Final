@@ -79,5 +79,9 @@ public class Deck
 		}
 		return 0;
 	}
-
+	
+	public static void main(String[] args)
+		{
+		
+		}// end main method
 	}
