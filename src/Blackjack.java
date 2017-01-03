@@ -17,13 +17,14 @@ public class Blackjack extends JFrame implements ActionListener
 		JPanel southPnl = new JPanel();
 		JPanel eastPnl = new JPanel();
 		
-		GridLayout eastLayout = new GridLayout(5, 1, 1, 1);
+		
+		
+		GridLayout eastLayout = new GridLayout(3, 1, 1, 1);
 		BorderLayout southLayout = new BorderLayout();
 		BorderLayout border = new BorderLayout();
 		
 		JButton hit = new JButton("Hit");
 		JButton stand = new JButton("Stand");
-		JButton fold = new JButton("Fold");
 		JButton start = new JButton("Start");
 		
 		int playerNum;
@@ -45,12 +46,10 @@ public class Blackjack extends JFrame implements ActionListener
 			
 			hit.setFont(dealerLabel);
 			stand.setFont(dealerLabel);
-			fold.setFont(dealerLabel);
 			start.setFont(dealerLabel);
 			
 			eastPnl.add(hit);
 			eastPnl.add(stand);
-			eastPnl.add(fold);
 			eastPnl.add(start);
 			
 			centerPnl.add(dealer);
@@ -65,25 +64,40 @@ public class Blackjack extends JFrame implements ActionListener
 		
 	public void actionPerformed(ActionEvent e)
 		{
+			Object source = e.getSource();
 			
 			hit.addActionListener(this);
 			stand.addActionListener(this);
-			fold.addActionListener(this);
 			start.addActionListener(this);
 			
-			if(source == fold)
-			{
-				player++;
-			}
 			if(source == stand)
 			{
-				for(int i = 1; i < numCards; i++)
-				{
-					numi = cardi;
-					total += numi;
-					player++;
-				}
+				// goes to next player
 			}
+			if(source == hit)
+				{
+					// give them another card
+					// then add that value to the existing player card value
+					// check if win or bust
+					// if bust move to next player
+					// if win go to next play
+					// while bust or win is not true
+					
+				}
+		}
+	public boolean checkWin(int cardValue)
+		{
+			if(cardValue == 21 && !checkBust(cardValue))
+				return true;
+			else
+				return false;
+		}
+	public boolean checkBust(int cardValue)
+		{
+			if (cardValue > 21)
+				return true;
+			else
+				return false;
 		}
 	
 	public void addButtonsEast()
@@ -116,6 +130,7 @@ public class Blackjack extends JFrame implements ActionListener
 	public static void main(String[] args)
 		{
 			Blackjack app = new Blackjack();
+			
 		}// end main method
-	
+		
 	}

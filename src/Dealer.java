@@ -5,7 +5,11 @@
    12/14/2016
 */
 
+import java.util.ArrayList;
+
 public class Dealer
 	{
+		ArrayList<String> cards = new ArrayList<String>();
+		
 		
 	}
