@@ -40,18 +40,19 @@ public class Blackjack extends JFrame implements ActionListener
 			setSize(500, 500);
 			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			
+			
+			eastPnl.setLayout(eastLayout);
+			
 			hit.setFont(dealerLabel);
 			stand.setFont(dealerLabel);
 			fold.setFont(dealerLabel);
 			start.setFont(dealerLabel);
 			
-			eastPnl.add(hit, eastLayout);
-			eastPnl.add(stand, eastLayout);
-			eastPnl.add(fold, eastLayout);
-			eastPnl.add(start, eastLayout);
-
-			southPnl.add(player, BorderLayout.WEST);
-
+			eastPnl.add(hit);
+			eastPnl.add(stand);
+			eastPnl.add(fold);
+			eastPnl.add(start);
+			
 			centerPnl.add(dealer);
 			dealer.setFont(dealerLabel);
 			
@@ -65,28 +66,33 @@ public class Blackjack extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e)
 		{
 			
+			hit.addActionListener(this);
+			stand.addActionListener(this);
+			fold.addActionListener(this);
+			start.addActionListener(this);
+			
+			if(source == fold)
+			{
+				player++;
+			}
+			if(source == stand)
+			{
+				for(int i = 1; i < numCards; i++)
+				{
+					numi = cardi;
+					total += numi;
+					player++;
+				}
+			}
 		}
 	
-	public void BenAceMethod()
-	{
-		/*
-		if (card1 == ace && card2 == faceCard)
-			Blackjack();
-		if (card1 == faceCard && card2 == ace)
-			Blackjack();
-		if (card1 = ace && isWin == false)
-			int sumCard1 = card2 + 1;
-			int sumCard2 = card2 + 11;
-			if (sumCard2 >= 21)
-				trueValue == sumCard2;
-			else
-				trueValue = sumCard1;
-			if (sumCard1 > 21)
-				Bust();
-		if(card2 == ace && isWin == false)
-
-		*/
-	}
+	public void addButtonsEast()
+		{
+		for (int i = 0; i < 4; i++)
+			{
+				
+			}
+		}
 	public static void main(String[] args)
 		{
 			Blackjack app = new Blackjack();
