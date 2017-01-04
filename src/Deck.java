@@ -11,17 +11,22 @@ import java.util.ArrayList;
 public class Deck
 	{
 	
-	private ArrayList<String> deck = new ArrayList<String>();
-	private ArrayList<String> shuffledDeck = new ArrayList<String>();
+	ArrayList<String> deck = new ArrayList<String>();
+	ArrayList<String> shuffledDeck = new ArrayList<String>();
 	
-	private ArrayList<String> value = new ArrayList<String>();
-	private ArrayList<String> suit = new ArrayList<String>();
+	ArrayList<String> value = new ArrayList<String>();
+	ArrayList<String> suit = new ArrayList<String>();
 	
-	private ArrayList<Integer> cardValues = new ArrayList<Integer>();
 	
-	private ArrayList<ImageIcon> imageDeck = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> imageDeck = new ArrayList<ImageIcon>();
 	
-	private ArrayList<ImageIcon> removedCards = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> removedCards = new ArrayList<ImageIcon>();
+	
+	public Deck()
+		{
+			
+		
+		}
 	
 	public void setDeck()
 		{
@@ -72,7 +77,7 @@ public class Deck
 			}
 		}
 	public int getCardValue(String card){
-		if (card.charAt(0) == 'k' ||card.charAt(0) == 'q' || card.charAt(0) == 'j' || card.charAt(0) == 't') {
+		if (card.charAt(0) == 'k' || card.charAt(0) == 'q' || card.charAt(0) == 'j' || card.charAt(0) == 't') {
 			return 10;
 		} else if (card.charAt(0) != 'a'){
 			return Character.getNumericValue(card.charAt(0));
@@ -80,8 +85,5 @@ public class Deck
 		return 0;
 	}
 	
-	public static void main(String[] args)
-		{
-		
-		}// end main method
+	
 	}

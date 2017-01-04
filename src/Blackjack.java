@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Blackjack extends JFrame implements ActionListener
 	{
@@ -78,7 +79,7 @@ public class Blackjack extends JFrame implements ActionListener
 			}
 			if(source == hit)
 				{
-					//if(checkWin(15))
+					//if(checkWin())
 						//next player
 						//save that the player won
 					// give them another card
@@ -89,8 +90,24 @@ public class Blackjack extends JFrame implements ActionListener
 					// while bust or win is not true
 					
 				}
-			Object[] options = {"Yes!", "No"};
-			JOptionPane.showOptionDialog(null, "Want to play again?", playerWon + " Won!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+			if (source == start)
+				{
+					// make deck and shuffle deck
+					Deck deck1 = new Deck();
+					deck1.setDeck();
+					deck1.setShuffledDeck();
+					deck1.setImageDeck();
+				
+					// dealer gets one card face up
+					Dealer dealer1 = new Dealer();
+					dealer1.cards.add(deck1.shuffledDeck.remove(0));
+					dealer1.imageCards.add(deck1.imageDeck.remove(0));
+					
+					
+					
+				}
+			//Object[] options = {"Yes!", "No"};
+			//JOptionPane.showOptionDialog(null, playerWon + " Won!!\nWant to play again?", playerWon + " Won!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 		}
 	public boolean checkWin(int cardValue)
 		{
@@ -106,6 +123,7 @@ public class Blackjack extends JFrame implements ActionListener
 			else
 				return false;
 		}
+		
 	
 	
 	public void BenAceMethod()
