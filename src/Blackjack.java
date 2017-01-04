@@ -30,7 +30,7 @@ public class Blackjack extends JFrame implements ActionListener
 		JButton stand = new JButton("Stand");
 		JButton start = new JButton("Start");
 		
-		int playerNum = 0;
+		int playerNum;
 		JLabel player = new JLabel("Player: " + playerNum);
 		JLabel dealer = new JLabel("Dealer");
 		
@@ -98,24 +98,12 @@ public class Blackjack extends JFrame implements ActionListener
 					deck1.setShuffledDeck();
 					deck1.setImageDeck();
 				
-					// create player object
-					Player players = new Player();
-					
 					// dealer gets one card face up
 					Dealer dealer1 = new Dealer();
 					dealer1.cards.add(deck1.shuffledDeck.remove(0));
 					dealer1.imageCards.add(deck1.imageDeck.remove(0));
 					
-					// give cards to each player
-					playerNum++;
-					players.addP1Card(deck1.shuffledDeck.remove(0));
-					players.addP1ImageCard(deck1.imageDeck.remove(0));
-					players.addP1Card(deck1.shuffledDeck.remove(0));
-					players.addP1ImageCard(deck1.imageDeck.remove(0));
 					
-					playerNum++;
-					players.addP2Card(deck1.shuffledDeck.remove(0));
-					players.addP2ImageCard(deck1.imageDeck.remove(0));
 					
 				}
 			//Object[] options = {"Yes!", "No"};
@@ -160,6 +148,7 @@ public class Blackjack extends JFrame implements ActionListener
 		  	}
 	public static void main(String[] args)
 		{
+			BlackJackStart myFrame = new BlackJackStart();	
 
 			
 			
