@@ -89,7 +89,8 @@ public class Blackjack extends JFrame implements ActionListener
 					// while bust or win is not true
 					
 				}
-			
+			Object[] options = {"Yes!", "No"};
+			JOptionPane.showOptionDialog(null, "Want to play again?", playerWon + " Won!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 		}
 	public boolean checkWin(int cardValue)
 		{
@@ -129,8 +130,7 @@ public class Blackjack extends JFrame implements ActionListener
 		  	}
 	public static void main(String[] args)
 		{
-			Object[] options = {"Yes!", "No"};
-			JOptionPane.showOptionDialog(null, "Want to play again?", "Again?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+
 			
 			
 		
