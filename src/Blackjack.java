@@ -310,12 +310,12 @@ public class Blackjack extends JFrame implements ActionListener
 			}
 		}
 	public void aceMethod(int playerNum, int cardVal)
- 		{
-			if (playerNum == 1)
-				{
-					//if (playerCards.get(0).getIcon().toString().charAt(0) == 'a')
-					
-				}
+		{
+		if (playerNum == 1)
+			{
+			//if (playerCards.get(0).getIcon().toString().charAt(0) == 'a')
+				
+			}
 			/*
 				
 			if (card1 = ace && isWin == false)
@@ -330,7 +330,14 @@ public class Blackjack extends JFrame implements ActionListener
 	 		if(card2 == ace && isWin == false)
 	 
 	 		*/
-		  	}
+	 		/*
+	 		if(playerCards.equals("a")
+	 		{
+	 			
+	 		
+	 		
+	 		 */
+		}
 
 		
 	}

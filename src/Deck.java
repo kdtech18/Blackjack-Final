@@ -82,6 +82,8 @@ public class Deck
 		} else if (card.charAt(0) != 'a'){
 			return Character.getNumericValue(card.charAt(0));
 		}
+		else if(card.charAt(0) == 'a')
+			return 11;
 		return 0;
 	}
 	
