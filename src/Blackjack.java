@@ -21,7 +21,7 @@ public class Blackjack extends JFrame implements ActionListener
 		
 		
 		GridLayout playerInfoLayout = new GridLayout(2, 1, 1, 1);
-		GridLayout eastLayout = new GridLayout(1, 3, 1, 1);
+		GridLayout eastLayout = new GridLayout(1, 2, 1, 1);
 		GridLayout southLayout = new GridLayout(1, 5, 1, 1);
 		BorderLayout border = new BorderLayout();
 		
@@ -29,7 +29,7 @@ public class Blackjack extends JFrame implements ActionListener
 		
 		JButton hit = new JButton("Hit");
 		JButton stand = new JButton("Stand");
-		JButton start = new JButton("Start");
+		
 
 		boolean[] playersWon = new boolean[4];
 		boolean[] playersBust = new boolean[4];
@@ -66,17 +66,17 @@ public class Blackjack extends JFrame implements ActionListener
 			
 			hit.setFont(dealerFont);
 			stand.setFont(dealerFont);
-			start.setFont(dealerFont);
+			
 			playerTurn.setFont(dealerFont);
 			pCardValue.setFont(dealerFont);
 
 			hit.addActionListener(this);
 			stand.addActionListener(this);
-			start.addActionListener(this);
+			
 
 			eastPnl.add(hit);
 			eastPnl.add(stand);
-			eastPnl.add(start);
+			
 
 			westPnl.setLayout(playerInfoLayout);
 			westPnl.add(playerTurn);
@@ -107,11 +107,37 @@ public class Blackjack extends JFrame implements ActionListener
 			if(source == stand)
 			{
 				// goes to next player
+				
 				playerNum++;
+				playerTurn.setText("Player " + playerNum + "'s Cards");
 				for (int i = 0; i < playerCards.size(); i++) {
 					southPnl.remove(playerCards.get(i));
+					revalidate();
 				}
 				addCardButtons(playerCards, southPnl);
+				if (playerNum == 2){
+					playerCards.get(0).setIcon(players.getP2ImageCards(0));
+					playerCards.get(1).setIcon(players.getP2ImageCards(1));
+					cardVal = deck1.getCardValue(players.getP2Cards(0)) + deck1.getCardValue(players.getP2Cards(1));
+					pCardValue.setText("Total Value: " + cardVal);
+					checkWin(cardVal, 2);
+					hit.setEnabled(true);
+					// add end jframe
+				} else if (playerNum == 3){
+					playerCards.get(0).setIcon(players.getP3ImageCards(0));
+					playerCards.get(1).setIcon(players.getP3ImageCards(1));
+					cardVal = deck1.getCardValue(players.getP3Cards(0)) + deck1.getCardValue(players.getP3Cards(1));
+					pCardValue.setText("Total Value: " + cardVal);
+					checkWin(cardVal, 3);
+					hit.setEnabled(true);
+				} else if (playerNum == 4){
+					playerCards.get(0).setIcon(players.getP4ImageCards(0));
+					playerCards.get(1).setIcon(players.getP4ImageCards(1));
+					cardVal = deck1.getCardValue(players.getP4Cards(0)) + deck1.getCardValue(players.getP4Cards(1));
+					pCardValue.setText("Total Value: " + cardVal);
+					checkWin(cardVal, 4);
+					
+				}
 			}
 			if(source == hit)
 				{
@@ -174,13 +200,7 @@ public class Blackjack extends JFrame implements ActionListener
 					// while bust or win is not true
 					
 				}
-			if (source == start)
-				{
-
-					
-					
-					
-				}
+			
 			//Object[] options = {"Yes!", "No"};
 			//JOptionPane.showOptionDialog(null, playerWon + " Won!!\nWant to play again?", playerWon + " Won!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 		}
@@ -289,13 +309,15 @@ public class Blackjack extends JFrame implements ActionListener
 				}
 			}
 		}
-	public void BenAceMethod()
+	public void aceMethod(int playerNum, int cardVal)
  		{
+			if (playerNum == 1)
+				{
+					//if (playerCards.get(0).getIcon().toString().charAt(0) == 'a')
+					
+				}
 			/*
-				if (card1 == ace && card2 == faceCard)
-	 				Blackjack();
-	 		if (card1 == faceCard && card2 == ace)
-	 			Blackjack();
+				
 			if (card1 = ace && isWin == false)
 	 			int sumCard1 = card2 + 1;
 	 			int sumCard2 = card2 + 11;

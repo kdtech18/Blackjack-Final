@@ -4,8 +4,7 @@
  */
  
  //awt's
- import java.awt.Color;
- import java.awt.BorderLayout;
+ import java.awt.*;
  import java.awt.event.ActionListener;
  import java.awt.event.ActionEvent;
  //swing's
@@ -32,6 +31,8 @@ public class BlackJackStart extends JFrame implements ActionListener
 	String[] playersArr = {"2","3","4"};
 	JComboBox players = new JComboBox(playersArr);
 
+	Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 28);
+	
 	//Button
 	JButton pressMe = new JButton("Start");
 	
@@ -45,7 +46,11 @@ public class BlackJackStart extends JFrame implements ActionListener
 
 		pressMe.addActionListener(this);
 		players.addActionListener(this);
-
+		
+		northLbl.setFont(font);
+		pressMe.setFont(font);
+		players.setFont(font);
+		
 		//main panel
 		add(mainPnl);
 		mainPnl.setLayout(border);

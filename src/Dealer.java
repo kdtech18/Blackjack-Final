@@ -10,8 +10,12 @@ import java.util.ArrayList;
 
 public class Dealer
 	{
+		
+		int cardValue;
+		
 		ArrayList<String> cards = new ArrayList<String>();
 		ArrayList<ImageIcon> imageCards = new ArrayList<ImageIcon>();
+		
 
 
 	}
