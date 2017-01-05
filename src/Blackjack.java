@@ -107,7 +107,11 @@ public class Blackjack extends JFrame implements ActionListener
 			if(source == stand)
 			{
 				// goes to next player
-
+				playerNum++;
+				for (int i = 0; i < playerCards.size(); i++) {
+					southPnl.remove(playerCards.get(i));
+				}
+				addCardButtons(playerCards, southPnl);
 			}
 			if(source == hit)
 				{
@@ -123,7 +127,44 @@ public class Blackjack extends JFrame implements ActionListener
 							{
 								hit.setEnabled(false);
 							}
+					} else if (playerNum == 2) {
+						players.addP2Card(deck1.shuffledDeck.remove(0));
+						players.addP2ImageCard(deck1.imageDeck.remove(0));
+						playerCards.add(new JButton(players.getP2ImageCards(players.p2Cards.size() - 1)));
+						southPnl.add(playerCards.get(playerCards.size() - 1));
+						revalidate();
+						cardVal+= deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
+						pCardValue.setText("Total Value: " + cardVal);
+						if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
+						{
+							hit.setEnabled(false);
+						}
+					} else if (playerNum == 3){
+						players.addP3Card(deck1.shuffledDeck.remove(0));
+						players.addP3ImageCard(deck1.imageDeck.remove(0));
+						playerCards.add(new JButton(players.getP3ImageCards(players.p3Cards.size() - 1)));
+						southPnl.add(playerCards.get(playerCards.size() - 1));
+						revalidate();
+						cardVal+= deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1));
+						pCardValue.setText("Total Value: " + cardVal);
+						if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
+						{
+							hit.setEnabled(false);
+						}
+					} else {
+						players.addP4Card(deck1.shuffledDeck.remove(0));
+						players.addP4ImageCard(deck1.imageDeck.remove(0));
+						playerCards.add(new JButton(players.getP4ImageCards(players.p4Cards.size() - 1)));
+						southPnl.add(playerCards.get(playerCards.size() - 1));
+						revalidate();
+						cardVal+= deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1));
+						pCardValue.setText("Total Value: " + cardVal);
+						if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
+						{
+							hit.setEnabled(false);
+						}
 					}
+
 					// give them another card
 
 					// then add that value to the existing player card value
@@ -146,7 +187,7 @@ public class Blackjack extends JFrame implements ActionListener
 	public boolean checkWin(int cardValue, int playerNum)
 		{
 			if(cardValue == 21 && !checkBust(cardValue, playerNum)) {
-				playersWon[playerNum] = true;
+				playersWon[playerNum - 1] = true;
 				return true;
 			}
 			else
@@ -155,7 +196,7 @@ public class Blackjack extends JFrame implements ActionListener
 	public boolean checkBust(int cardValue, int playerNum)
 		{
 			if (cardValue > 21) {
-				playersBust[playerNum] = true;
+				playersBust[playerNum - 1] = true;
 				return true;
 			}
 			else
