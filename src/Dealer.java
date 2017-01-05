@@ -12,5 +12,6 @@ public class Dealer
 	{
 		ArrayList<String> cards = new ArrayList<String>();
 		ArrayList<ImageIcon> imageCards = new ArrayList<ImageIcon>();
-		
+
+
 	}

@@ -11,15 +11,15 @@ import java.util.ArrayList;
 public class Player
 	{
 		private int numPlayers;
-		private ArrayList<ImageIcon> p1ImageCards = new ArrayList<ImageIcon>();
-		private ArrayList<ImageIcon> p2ImageCards = new ArrayList<ImageIcon>();
-		private ArrayList<ImageIcon> p3ImageCards = new ArrayList<ImageIcon>();
-		private ArrayList<ImageIcon> p4ImageCards = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> p1ImageCards = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> p2ImageCards = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> p3ImageCards = new ArrayList<ImageIcon>();
+		ArrayList<ImageIcon> p4ImageCards = new ArrayList<ImageIcon>();
 	
-		private ArrayList<String> p1Cards = new ArrayList<String>();
-		private ArrayList<String> p2Cards = new ArrayList<String>();
-		private ArrayList<String> p3Cards = new ArrayList<String>();
-		private ArrayList<String> p4Cards = new ArrayList<String>();
+		ArrayList<String> p1Cards = new ArrayList<String>();
+		ArrayList<String> p2Cards = new ArrayList<String>();
+		ArrayList<String> p3Cards = new ArrayList<String>();
+		ArrayList<String> p4Cards = new ArrayList<String>();
 		
 		
 	public void addP1ImageCard(ImageIcon card)
@@ -55,8 +55,40 @@ public class Player
 		{
 			p4Cards.add(card);
 		}
-	
-	public void setNumPlayers(int numPlayers)
+
+		public ImageIcon getP1ImageCards(int index) {
+			return p1ImageCards.get(index);
+		}
+
+		public ImageIcon getP2ImageCards(int index) {
+			return p2ImageCards.get(index);
+		}
+
+		public ImageIcon getP3ImageCards(int index) {
+			return p3ImageCards.get(index);
+		}
+
+		public ImageIcon getP4ImageCards(int index) {
+			return p4ImageCards.get(index);
+		}
+
+		public String getP1Cards(int index) {
+			return p1Cards.get(index);
+		}
+
+		public String getP2Cards(int index) {
+			return p2Cards.get(index);
+		}
+
+		public String getP3Cards(int index) {
+			return p3Cards.get(index);
+		}
+
+		public String getP4Cards(int index) {
+			return p4Cards.get(index);
+		}
+
+		public void setNumPlayers(int numPlayers)
 		{
 		this.numPlayers = numPlayers;
 		}

@@ -73,7 +73,7 @@ public class Deck
 		{
 		for (int i = 0; i < shuffledDeck.size(); i++)
 			{
-				imageDeck.add(new ImageIcon(shuffledDeck.get(i)));
+				imageDeck.add(new ImageIcon(shuffledDeck.get(i) + ".gif"));
 			}
 		}
 	public int getCardValue(String card){
