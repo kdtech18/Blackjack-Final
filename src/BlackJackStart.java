@@ -42,7 +42,10 @@ public class BlackJackStart extends JFrame implements ActionListener
 		setSize(450,450);
 		setVisible(true);
 		setLocationRelativeTo(null);
-		
+
+		pressMe.addActionListener(this);
+		players.addActionListener(this);
+
 		//main panel
 		add(mainPnl);
 		mainPnl.setLayout(border);
@@ -73,12 +76,11 @@ public class BlackJackStart extends JFrame implements ActionListener
 		Object source = e.getSource();
 		if(source == pressMe)
 		{
-			Blackjack start = new Blackjack();
-			pressMe.addActionListener(this);	
+			dispose();
+			Blackjack app = new Blackjack((String)players.getSelectedItem());
+
 			
 		}
-	
-	
 	
 	}
 	

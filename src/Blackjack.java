@@ -29,34 +29,40 @@ public class Blackjack extends JFrame implements ActionListener
 		JButton hit = new JButton("Hit");
 		JButton stand = new JButton("Stand");
 		JButton start = new JButton("Start");
-		
+
+
+
+		String numPlayers;
 		int playerNum;
 		JLabel player = new JLabel("Player: " + playerNum);
 		JLabel dealer = new JLabel("Dealer");
 		
-		Font dealerLabel = new Font(Font.SANS_SERIF, Font.PLAIN, 28);
-		
-	public Blackjack()
+		Font dealerFont = new Font(Font.SANS_SERIF, Font.PLAIN, 28);
+
+
+
+	public Blackjack(String numPlayers)
 		{
 			super("BlackJack");
 			add(mainPnl);
 			setVisible(true);
 			setSize(500, 500);
 			setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-			
+
+			this.numPlayers = numPlayers;
 			
 			eastPnl.setLayout(eastLayout);
 			
-			hit.setFont(dealerLabel);
-			stand.setFont(dealerLabel);
-			start.setFont(dealerLabel);
+			hit.setFont(dealerFont);
+			stand.setFont(dealerFont);
+			start.setFont(dealerFont);
 			
 			eastPnl.add(hit);
 			eastPnl.add(stand);
 			eastPnl.add(start);
 			
 			centerPnl.add(dealer);
-			dealer.setFont(dealerLabel);
+			dealer.setFont(dealerFont);
 			
 			mainPnl.add(centerPnl, BorderLayout.CENTER);
 			mainPnl.add(eastPnl, BorderLayout.EAST);
@@ -146,14 +152,6 @@ public class Blackjack extends JFrame implements ActionListener
 	 
 	 		*/
 		  	}
-	public static void main(String[] args)
-		{
-			BlackJackStart myFrame = new BlackJackStart();	
 
-			
-			
-		
-			
-		}// end main method
 		
 	}
