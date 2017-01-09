@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.awt.Toolkit;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class Blackjack extends JFrame implements ActionListener
 	{
@@ -38,6 +41,7 @@ public class Blackjack extends JFrame implements ActionListener
 		int cardVal;
 		String numPlayers;
 		int playerNum = 1;
+		int dealerVal;
 		JLabel playerTurn = new JLabel("Player " + playerNum + "'s Cards");
 		JLabel dealer = new JLabel("Dealer");
 		JLabel pCardValue = new JLabel("Total Value: " + cardVal);
@@ -51,6 +55,7 @@ public class Blackjack extends JFrame implements ActionListener
 
 		Player players = new Player();
 		Deck deck1 = new Deck();
+		Dealer dealer1 = new Dealer();
 
 	public Blackjack(String numPlayers)
 		{
@@ -108,9 +113,15 @@ public class Blackjack extends JFrame implements ActionListener
 			if(source == stand)
 			{
 				// goes to next player
-
-				playerNum++;
+				for(int i = 1; i<5; i++);
+				{
+					playerNum++;
+				}
 				playerTurn.setText("Player " + playerNum + "'s Cards");
+				if(playerNum == 5)
+				{
+					playerTurn.setText("Dealer's Turn");
+				}
 				for (int i = 0; i < playerCards.size(); i++) {
 					southPnl.remove(playerCards.get(i));
 					revalidate();
@@ -125,18 +136,92 @@ public class Blackjack extends JFrame implements ActionListener
 					hit.setEnabled(true);
 					// add end jframe
 				} else if (playerNum == 3){
-					playerCards.get(0).setIcon(players.getP3ImageCards(0));
-					playerCards.get(1).setIcon(players.getP3ImageCards(1));
-					cardVal = deck1.getCardValue(players.getP3Cards(0)) + deck1.getCardValue(players.getP3Cards(1));
-					pCardValue.setText("Total Value: " + cardVal);
-					checkWin(cardVal, 3);
-					hit.setEnabled(true);
+					if(numPlayers.equals("2"))
+					{
+						hit.setEnabled(false);
+						stand.setEnabled(false);
+						playerTurn.setText("Dealer's turn");
+						dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
+						cardVal = 0;
+						cardVal += deck1.getCardValue(dealer1.getCards(0)) + deck1.getCardValue(dealer1.getCards(1));
+						pCardValue.setText("Dealer's value: " + cardVal);
+						for(int i = 2; i < 10; i++) {
+								dealer1.cards.add(deck1.shuffledDeck.remove(0));
+								cardVal += deck1.getCardValue(dealer1.getCards(i));
+								pCardValue.setText("Dealer's value: " + cardVal);
+								if(cardVal > 17)
+								{
+									dealerVal = cardVal;
+									break;
+								}
+						}
+						if(cardVal > 17 || cardVal < 22) {
+							Hopeful please = new Hopeful(5);
+						}
+					}
+					else {
+						playerCards.get(0).setIcon(players.getP3ImageCards(0));
+						playerCards.get(1).setIcon(players.getP3ImageCards(1));
+						cardVal = deck1.getCardValue(players.getP3Cards(0)) + deck1.getCardValue(players.getP3Cards(1));
+						pCardValue.setText("Total Value: " + cardVal);
+						checkWin(cardVal, 3);
+						hit.setEnabled(true);
+					}
+
 				} else if (playerNum == 4){
-					playerCards.get(0).setIcon(players.getP4ImageCards(0));
-					playerCards.get(1).setIcon(players.getP4ImageCards(1));
-					cardVal = deck1.getCardValue(players.getP4Cards(0)) + deck1.getCardValue(players.getP4Cards(1));
-					pCardValue.setText("Total Value: " + cardVal);
-					checkWin(cardVal, 4);
+					if(numPlayers.equals("3"))
+					{
+						hit.setEnabled(false);
+						stand.setEnabled(false);
+						playerTurn.setText("Dealer's turn");
+						dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
+						cardVal = 0;
+						cardVal += deck1.getCardValue(dealer1.getCards(0)) + deck1.getCardValue(dealer1.getCards(1));
+						pCardValue.setText("Dealer's value: " + cardVal);
+						for(int i = 2; i < 10; i++) {
+							dealer1.cards.add(deck1.shuffledDeck.remove(0));
+							cardVal += deck1.getCardValue(dealer1.getCards(i));
+							pCardValue.setText("Dealer's value: " + cardVal);
+							if(cardVal > 17)
+							{
+								dealerVal = cardVal;
+								break;
+							}
+						}
+						if(cardVal > 17 || cardVal < 22) {
+							Hopeful please = new Hopeful(5);
+						}
+					}
+					else {
+						playerCards.get(0).setIcon(players.getP4ImageCards(0));
+						playerCards.get(1).setIcon(players.getP4ImageCards(1));
+						cardVal = deck1.getCardValue(players.getP4Cards(0)) + deck1.getCardValue(players.getP4Cards(1));
+						pCardValue.setText("Total Value: " + cardVal);
+						checkWin(cardVal, 4);
+					}
+				}
+				else if(playerNum == 5)
+				{
+					hit.setEnabled(false);
+					stand.setEnabled(false);
+					playerTurn.setText("Dealer's turn");
+					dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
+					cardVal = 0;
+					cardVal += deck1.getCardValue(dealer1.getCards(0)) + deck1.getCardValue(dealer1.getCards(1));
+					pCardValue.setText("Dealer's value: " + cardVal);
+					for(int i = 2; i < 10; i++) {
+						dealer1.cards.add(deck1.shuffledDeck.remove(0));
+						cardVal += deck1.getCardValue(dealer1.getCards(i));
+						pCardValue.setText("Dealer's value: " + cardVal);
+						if(cardVal > 17 || cardVal < 22)
+						{
+							dealerVal = cardVal;
+							break;
+						}
+					}
+					if(cardVal > 17 || cardVal < 22) {
+						Hopeful please = new Hopeful(5);
+					}
 
 				}
 			}
@@ -256,7 +341,6 @@ public class Blackjack extends JFrame implements ActionListener
 			deck1.setImageDeck();
 
 			// dealer gets one card face up
-			Dealer dealer1 = new Dealer();
 			dealer1.cards.add(deck1.shuffledDeck.remove(0));
 			dealer1.imageCards.add(deck1.imageDeck.remove(0));
 
@@ -264,6 +348,17 @@ public class Blackjack extends JFrame implements ActionListener
 			dealer1.imageCards.add(deck1.imageDeck.remove(0));
 
 			dealerCards.get(0).setIcon(dealer1.imageCards.get(0));
+			if(deck1.getCardValue(dealer1.getCards(0)) == 10 || deck1.getCardValue(dealer1.getCards(0)) == 11)
+			{
+				cardVal = deck1.getCardValue(dealer1.getCards(0)) + deck1.getCardValue(dealer1.getCards(1));
+					if(cardVal == 21)
+					{
+						hit.setEnabled(false);
+						stand.setEnabled(false);
+						dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
+						Hopeful luck = new Hopeful(5);
+					}
+			}
 
 			// each player is given two cards face up
 
