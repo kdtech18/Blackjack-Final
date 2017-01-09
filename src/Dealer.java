@@ -15,7 +15,15 @@ public class Dealer
 		
 		ArrayList<String> cards = new ArrayList<String>();
 		ArrayList<ImageIcon> imageCards = new ArrayList<ImageIcon>();
-		
-
-
+	
+	public String getCards(int index)
+		{
+		return cards.get(index);
+		}
+	
+	public ImageIcon getImageCards(int index)
+		{
+		return imageCards.get(index);
+		}
+	
 	}

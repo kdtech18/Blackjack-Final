@@ -38,6 +38,7 @@ public class Blackjack extends JFrame implements ActionListener
 		boolean[] playersBust = new boolean[4];
 
 		int aces = 0;
+		int subtract = 0;
 		int cardVal;
 		String numPlayers;
 		int playerNum = 1;
@@ -229,12 +230,23 @@ public class Blackjack extends JFrame implements ActionListener
 				{
 					if (playerNum == 1){
 						players.addP1Card(deck1.shuffledDeck.remove(0));
+						
 						players.addP1ImageCard(deck1.imageDeck.remove(0));
 						playerCards.add(new JButton(players.getP1ImageCards(players.p1Cards.size() - 1)));
+						
+							if (deck1.getCardValue(players.getP1Cards(3)) == 11)
+								{
+								if (cardVal <= 21)
+									cardVal += 11;
+								else
+									cardVal += 1;
+								} else
+								cardVal += deck1.getCardValue(players.getP1Cards(3));
+							
 						southPnl.add(playerCards.get(playerCards.size() - 1));
 						revalidate();
 						cardVal+= deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
-						aceCount();
+						
 						pCardValue.setText("Total Value: " + cardVal);
 						if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
 							{
@@ -247,7 +259,7 @@ public class Blackjack extends JFrame implements ActionListener
 						southPnl.add(playerCards.get(playerCards.size() - 1));
 						revalidate();
 						cardVal+= deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
-						aceCount();
+						
 						pCardValue.setText("Total Value: " + cardVal);
 						if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
 						{
@@ -260,7 +272,7 @@ public class Blackjack extends JFrame implements ActionListener
 						southPnl.add(playerCards.get(playerCards.size() - 1));
 						revalidate();
 						cardVal+= deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1));
-						aceCount();
+						
 						pCardValue.setText("Total Value: " + cardVal);
 						if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
 						{
@@ -273,7 +285,7 @@ public class Blackjack extends JFrame implements ActionListener
 						southPnl.add(playerCards.get(playerCards.size() - 1));
 						revalidate();
 						cardVal+= deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1));
-						aceCount();
+						
 						pCardValue.setText("Total Value: " + cardVal);
 						if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
 						{
@@ -367,8 +379,19 @@ public class Blackjack extends JFrame implements ActionListener
 			// goes to player 1's turn
 			playerCards.get(0).setIcon(players.getP1ImageCards(0));
 			playerCards.get(1).setIcon(players.getP1ImageCards(1));
-			cardVal = deck1.getCardValue(players.getP1Cards(0)) + deck1.getCardValue(players.getP1Cards(1));
-			aceCount();
+		for (int i = 0; i < playerCards.size(); i++)
+			{
+				if (deck1.getCardValue(players.getP1Cards(i)) == 11)
+					{
+						if (cardVal <= 21)
+							cardVal += 11;
+						else
+							cardVal += 1;
+					}
+				else
+					cardVal += deck1.getCardValue(players.getP1Cards(i));
+			}
+			
 			pCardValue.setText("Total Value: " + cardVal);
 			if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum))
 			{
@@ -413,11 +436,7 @@ public class Blackjack extends JFrame implements ActionListener
 				}
 			}
 		}
-	public void aceCount() {
-		for (int i = 0; i < playerCards.size(); i++) {
-			if (((ImageIcon)playerCards.get(i).getIcon()).getDescription().charAt(0) == 'a')
-				this.aces++;
-		}
-	}
+	
+
 
 	}
