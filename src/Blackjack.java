@@ -10,9 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.Toolkit;
-import java.util.TimerTask;
-import java.util.Timer;
+import javax.swing.Timer;
 
 public class Blackjack extends JFrame implements ActionListener {
 	JPanel mainPnl = new JPanel();
@@ -55,7 +53,20 @@ public class Blackjack extends JFrame implements ActionListener {
 	ArrayList<JButton> playerCards = new ArrayList<JButton>();
 
 	ImageIcon cardBack = new ImageIcon("b.gif");
-
+	
+	int delay = 5000;
+	
+	ActionListener timerAction = new ActionListener()
+		{
+		
+		public void actionPerformed(ActionEvent e)
+			{
+				dispose();
+				BlackJackEnd gui = new BlackJackEnd(players);
+				
+			}
+		};
+	
 	Player players = new Player();
 	Deck deck1 = new Deck();
 	Dealer dealer1 = new Dealer();
@@ -154,7 +165,7 @@ public class Blackjack extends JFrame implements ActionListener {
 						for (int i = 2; i < 10; i++) {
 							dealer1.cards.add(deck1.shuffledDeck.remove(0));
 							cardVal += deck1.getCardValue(dealer1.getCards(i));
-							dealerCards.add(new JButton(dealer1.getImageCards(i)));
+							dealerCards.add(new JButton(dealer1.getImageCards(i - 1)));
 							pCardValue.setText("Dealer's value: " + cardVal);
 							if (cardVal > 17) {
 								dealerVal = cardVal;
@@ -170,8 +181,10 @@ public class Blackjack extends JFrame implements ActionListener {
 					{
 						pCardValue.setText("Dealer Busts: " + cardVal);
 					}
-
-					Hopeful please = new Hopeful(5);
+				
+					Timer timer = new Timer(delay, timerAction);
+					timer.setRepeats(false);
+					timer.start();
 
 				} else {
 					playerCards.get(0).setIcon(players.getP3ImageCards(0));
@@ -219,8 +232,10 @@ public class Blackjack extends JFrame implements ActionListener {
 					{
 						pCardValue.setText("Dealer Busts: " + cardVal);
 					}
-
-					Hopeful please = new Hopeful(5);
+				
+					Timer timer = new Timer(delay, timerAction);
+					timer.setRepeats(false);
+					timer.start();
 
 				} else {
 					playerCards.get(0).setIcon(players.getP4ImageCards(0));
@@ -265,9 +280,10 @@ public class Blackjack extends JFrame implements ActionListener {
 				{
 					pCardValue.setText("Dealer Busts: " + cardVal);
 				}
-
-				Hopeful please = new Hopeful(5);
-
+			
+				Timer timer = new Timer(delay, timerAction);
+				timer.setRepeats(false);
+				timer.start();
 
 			}
 		}
@@ -340,7 +356,7 @@ public class Blackjack extends JFrame implements ActionListener {
 					}
 				}
 
-				if(deck1.getCardValue(players.getP2Cards(players.p2Cards.size())) - 1 != 11 && deck1.getCardValue(players.getP2Cards(0)) != 11 && deck1.getCardValue(players.getP2Cards(1)) != 11)
+				if(deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) != 11 && deck1.getCardValue(players.getP2Cards(0)) != 11 && deck1.getCardValue(players.getP2Cards(1)) != 11)
 				{
 					cardVal += deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
 				}

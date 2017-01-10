@@ -50,7 +50,7 @@
 	//Button
 	JButton pressMe2 = new JButton("Restart");
 	
-	public BlackJackEnd()
+	public BlackJackEnd(Player players)
 	{
 	
 		
@@ -122,10 +122,5 @@
 		
 	
 	}	
- 	public static void main(String [] args)
- 	{
- 		BlackJackEnd yeah = new BlackJackEnd();
- 		yeah.setVisible(true);
- 		
- 	}
+ 
  }//end class
