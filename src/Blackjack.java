@@ -34,6 +34,7 @@ public class Blackjack extends JFrame implements ActionListener {
 	boolean[] playersBust = new boolean[4];
 
 	int aces = 0;
+	int count = 0;
 	int subtract = 0;
 	int cardVal;
 	String numPlayers;
@@ -53,20 +54,18 @@ public class Blackjack extends JFrame implements ActionListener {
 	ArrayList<JButton> playerCards = new ArrayList<JButton>();
 
 	ImageIcon cardBack = new ImageIcon("b.gif");
-	
+
 	int delay = 5000;
-	
+
 	ActionListener timerAction = new ActionListener()
-		{
-		
+	{
 		public void actionPerformed(ActionEvent e)
-			{
-				dispose();
-				BlackJackEnd gui = new BlackJackEnd(players);
-				
-			}
-		};
-	
+		{
+			dispose();
+			BlackJackEnd gui = new BlackJackEnd(players);
+
+		}
+	};
 	Player players = new Player();
 	Deck deck1 = new Deck();
 	Dealer dealer1 = new Dealer();
@@ -123,6 +122,7 @@ public class Blackjack extends JFrame implements ActionListener {
 
 		if (source == stand) {
 			// goes to next player
+			count = 0;
 			for (int i = 1; i < 5; i++) ;
 			{
 				playerNum++;
@@ -165,7 +165,6 @@ public class Blackjack extends JFrame implements ActionListener {
 						for (int i = 2; i < 10; i++) {
 							dealer1.cards.add(deck1.shuffledDeck.remove(0));
 							cardVal += deck1.getCardValue(dealer1.getCards(i));
-							dealerCards.add(new JButton(dealer1.getImageCards(i - 1)));
 							pCardValue.setText("Dealer's value: " + cardVal);
 							if (cardVal > 17) {
 								dealerVal = cardVal;
@@ -181,7 +180,7 @@ public class Blackjack extends JFrame implements ActionListener {
 					{
 						pCardValue.setText("Dealer Busts: " + cardVal);
 					}
-				
+
 					Timer timer = new Timer(delay, timerAction);
 					timer.setRepeats(false);
 					timer.start();
@@ -232,7 +231,7 @@ public class Blackjack extends JFrame implements ActionListener {
 					{
 						pCardValue.setText("Dealer Busts: " + cardVal);
 					}
-				
+
 					Timer timer = new Timer(delay, timerAction);
 					timer.setRepeats(false);
 					timer.start();
@@ -280,10 +279,11 @@ public class Blackjack extends JFrame implements ActionListener {
 				{
 					pCardValue.setText("Dealer Busts: " + cardVal);
 				}
-			
+
 				Timer timer = new Timer(delay, timerAction);
 				timer.setRepeats(false);
 				timer.start();
+
 
 			}
 		}
@@ -293,19 +293,41 @@ public class Blackjack extends JFrame implements ActionListener {
 
 				players.addP1ImageCard(deck1.imageDeck.remove(0));
 				playerCards.add(new JButton(players.getP1ImageCards(players.p1Cards.size() - 1)));
-				if (deck1.getCardValue(players.getP1Cards(2)) == 11)
-				{
-					if (cardVal + 11 <= 21)
-						cardVal += 11;
-					else
-						cardVal += 1;
-				} else
-					cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
-
-				//cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
-
 				southPnl.add(playerCards.get(playerCards.size() - 1));
 				revalidate();
+				if(deck1.getCardValue(players.getP1Cards(0)) == 11 || deck1.getCardValue(players.getP1Cards(1)) == 11 || deck1.getCardValue(players.getP1Cards(2)) == 11)
+				{
+					if(deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1)) == 11)
+					{
+						cardVal += 1;
+					}
+					else if(cardVal + deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1)) > 21 && count == 0)
+					{
+						cardVal -= 10;
+						cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size()-1));
+						count++;
+					}
+					else
+					{
+						cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size() -1));
+					}
+				}
+				else if(deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1)) == 11)
+				{
+					if(cardVal + 11 > 21)
+					{
+						cardVal += 1;
+					}
+					else
+					{
+						cardVal += 11;
+					}
+				}
+				else if(deck1.getCardValue(players.getP1Cards(players.p2Cards.size())) - 1 != 11 && deck1.getCardValue(players.getP1Cards(0)) != 11 && deck1.getCardValue(players.getP1Cards(1)) != 11)
+				{
+					cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
+				}
+
 				//cardVal+= deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
 
 				pCardValue.setText("Total Value: " + cardVal);
@@ -324,18 +346,24 @@ public class Blackjack extends JFrame implements ActionListener {
 				//cardVal += deck1.getCardValue(players.getP2Cards(players.p1Cards.size() - 1));
 				southPnl.add(playerCards.get(playerCards.size() - 1));
 				revalidate();
-				if(deck1.getCardValue(players.getP2Cards(0)) == 11 || deck1.getCardValue(players.getP2Cards(1)) == 11)
+				if(deck1.getCardValue(players.getP2Cards(0)) == 11 || deck1.getCardValue(players.getP2Cards(1)) == 11 || deck1.getCardValue(players.getP2Cards(2)) == 11)
 				{
 					if(deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) == 11)
 					{
 						cardVal += 1;
 					}
+					else if(cardVal + deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) > 21 && count == 0)
+					{
+						cardVal -= 10;
+						cardVal += deck1.getCardValue(players.getP2Cards(players.p2Cards.size()-1));
+						count++;
+					}
 					else
 					{
-						cardVal += deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
+						cardVal += deck1.getCardValue(players.getP2Cards(players.p2Cards.size() -1));
 					}
 				}
-				if(deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) == 11)
+				else if(deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) == 11)
 				{
 					if(cardVal + 11 > 21)
 					{
@@ -347,16 +375,8 @@ public class Blackjack extends JFrame implements ActionListener {
 					}
 				}
 
-				if(deck1.getCardValue(players.getP2Cards(0)) == 11 || deck1.getCardValue(players.getP2Cards(1)) == 11)
-				{
-					if(cardVal + deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) > 21)
-					{
-						cardVal -= 10;
-						cardVal += deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
-					}
-				}
 
-				if(deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) != 11 && deck1.getCardValue(players.getP2Cards(0)) != 11 && deck1.getCardValue(players.getP2Cards(1)) != 11)
+				else
 				{
 					cardVal += deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
 				}
@@ -377,7 +397,41 @@ public class Blackjack extends JFrame implements ActionListener {
 				//cardVal += deck1.getCardValue(players.getP3Cards(players.p1Cards.size() - 1));
 				southPnl.add(playerCards.get(playerCards.size() - 1));
 				revalidate();
-				cardVal+= deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1));
+				if(deck1.getCardValue(players.getP3Cards(0)) == 11 || deck1.getCardValue(players.getP3Cards(1)) == 11 || deck1.getCardValue(players.getP3Cards(2)) == 11)
+				{
+					if(deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1)) == 11)
+					{
+						cardVal += 1;
+					}
+					else if(cardVal + deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1)) > 21 && count == 0)
+					{
+						cardVal -= 10;
+						cardVal += deck1.getCardValue(players.getP3Cards(players.p3Cards.size()-1));
+						count++;
+					}
+					else
+					{
+						cardVal += deck1.getCardValue(players.getP3Cards(players.p3Cards.size() -1));
+					}
+				}
+				else if(deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1)) == 11)
+				{
+					if(cardVal + 11 > 21)
+					{
+						cardVal += 1;
+					}
+					else
+					{
+						cardVal += 11;
+					}
+				}
+
+
+				else
+				{
+					cardVal += deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1));
+				}
+				//cardVal+= deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1));
 
 				pCardValue.setText("Total Value: " + cardVal);
 				if (checkWin(cardVal, playerNum)) {
@@ -395,7 +449,42 @@ public class Blackjack extends JFrame implements ActionListener {
 				//cardVal += deck1.getCardValue(players.getP4Cards(players.p1Cards.size() - 1));
 				southPnl.add(playerCards.get(playerCards.size() - 1));
 				revalidate();
-				cardVal+= deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1));
+				if(deck1.getCardValue(players.getP4Cards(0)) == 11 || deck1.getCardValue(players.getP4Cards(1)) == 11 || deck1.getCardValue(players.getP4Cards(2)) == 11)
+				{
+					if(deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1)) == 11)
+					{
+						cardVal += 1;
+					}
+					else if(cardVal + deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1)) > 21 && count == 0)
+					{
+						cardVal -= 10;
+						cardVal += deck1.getCardValue(players.getP4Cards(players.p4Cards.size()-1));
+						count++;
+					}
+					else
+					{
+						cardVal += deck1.getCardValue(players.getP4Cards(players.p4Cards.size() -1));
+					}
+				}
+				else if(deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1)) == 11)
+				{
+					if(cardVal + 11 > 21)
+					{
+						cardVal += 1;
+					}
+					else
+					{
+						cardVal += 11;
+					}
+				}
+
+
+				else
+				{
+					cardVal += deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1));
+				}
+
+				//cardVal+= deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1));
 
 				pCardValue.setText("Total Value: " + cardVal);
 				if (checkWin(cardVal, playerNum)) {
