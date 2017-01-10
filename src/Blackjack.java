@@ -477,7 +477,9 @@ public class Blackjack extends JFrame implements ActionListener {
 				hit.setEnabled(false);
 				stand.setEnabled(false);
 				dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
-				Hopeful luck = new Hopeful(5);
+				Timer timer = new Timer(delay, timerAction);
+				timer.setRepeats(false);
+				timer.start();
 			}
 		}
 
