@@ -173,8 +173,8 @@ public class Blackjack extends JFrame implements ActionListener {
 								}
 								else if(cardVal + deck1.getCardValue(dealer1.getCards(i)) > 21 && count == 0)
 								{
-									cardVal -= 10;
 									cardVal += deck1.getCardValue(dealer1.getCards(i));
+									cardVal -= 10;
 									count++;
 								}
 								else
@@ -257,8 +257,8 @@ public class Blackjack extends JFrame implements ActionListener {
 								}
 								else if(cardVal + deck1.getCardValue(dealer1.getCards(i)) > 21 && count == 0)
 								{
-									cardVal -= 10;
 									cardVal += deck1.getCardValue(dealer1.getCards(i));
+									cardVal -= 10;
 									count++;
 								}
 								else
@@ -338,8 +338,8 @@ public class Blackjack extends JFrame implements ActionListener {
 							}
 							else if(cardVal + deck1.getCardValue(dealer1.getCards(i)) > 21 && count == 0)
 							{
-								cardVal -= 10;
 								cardVal += deck1.getCardValue(dealer1.getCards(i));
+								cardVal -= 10;
 								count++;
 							}
 							else
