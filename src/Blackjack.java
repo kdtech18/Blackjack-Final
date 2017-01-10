@@ -159,12 +159,46 @@ public class Blackjack extends JFrame implements ActionListener {
 					playerTurn.setText("Dealer's turn");
 					dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
 					cardVal = 0;
+
 					cardVal += deck1.getCardValue(dealer1.getCards(0)) + deck1.getCardValue(dealer1.getCards(1));
 					pCardValue.setText("Dealer's value: " + cardVal);
 					if (cardVal < 17) {
 						for (int i = 2; i < 10; i++) {
 							dealer1.cards.add(deck1.shuffledDeck.remove(0));
-							cardVal += deck1.getCardValue(dealer1.getCards(i));
+							//cardVal += deck1.getCardValue(dealer1.getCards(i));
+							if(deck1.getCardValue(dealer1.getCards(0)) == 11 || deck1.getCardValue(dealer1.getCards(1)) == 11 || deck1.getCardValue(dealer1.getCards(2)) == 11)
+							{
+								if(deck1.getCardValue(dealer1.getCards(i)) == 11)
+								{
+									cardVal += 1;
+								}
+								else if(cardVal + deck1.getCardValue(dealer1.getCards(i)) > 21 && count == 0)
+								{
+									cardVal -= 10;
+									cardVal += deck1.getCardValue(dealer1.getCards(i));
+									count++;
+								}
+								else
+								{
+									cardVal += deck1.getCardValue(dealer1.getCards(i));
+								}
+							}
+							else if(deck1.getCardValue(dealer1.getCards(i)) == 11)
+							{
+								if(cardVal + 11 > 21)
+								{
+									cardVal += 1;
+								}
+								else
+								{
+									cardVal += 11;
+								}
+							}
+							else
+							{
+								cardVal += deck1.getCardValue(dealer1.getCards(i));
+							}
+							//cardVal += deck1.getCardValue(dealer1.getCards(i));
 							pCardValue.setText("Dealer's value: " + cardVal);
 							if (cardVal > 17) {
 								dealerVal = cardVal;
@@ -215,7 +249,40 @@ public class Blackjack extends JFrame implements ActionListener {
 					if (cardVal < 17) {
 						for (int i = 2; i < 10; i++) {
 							dealer1.cards.add(deck1.shuffledDeck.remove(0));
-							cardVal += deck1.getCardValue(dealer1.getCards(i));
+							//cardVal += deck1.getCardValue(dealer1.getCards(i));
+							if(deck1.getCardValue(dealer1.getCards(0)) == 11 || deck1.getCardValue(dealer1.getCards(1)) == 11 || deck1.getCardValue(dealer1.getCards(2)) == 11)
+							{
+								if(deck1.getCardValue(dealer1.getCards(i)) == 11)
+								{
+									cardVal += 1;
+								}
+								else if(cardVal + deck1.getCardValue(dealer1.getCards(i)) > 21 && count == 0)
+								{
+									cardVal -= 10;
+									cardVal += deck1.getCardValue(dealer1.getCards(i));
+									count++;
+								}
+								else
+								{
+									cardVal += deck1.getCardValue(dealer1.getCards(i));
+								}
+							}
+							else if(deck1.getCardValue(dealer1.getCards(i)) == 11)
+							{
+								if(cardVal + 11 > 21)
+								{
+									cardVal += 1;
+								}
+								else
+								{
+									cardVal += 11;
+								}
+							}
+							else
+							{
+								cardVal += deck1.getCardValue(dealer1.getCards(i));
+							}
+							//cardVal += deck1.getCardValue(dealer1.getCards(i));
 							pCardValue.setText("Dealer's value: " + cardVal);
 							if (cardVal > 17) {
 								dealerVal = cardVal;
@@ -263,7 +330,40 @@ public class Blackjack extends JFrame implements ActionListener {
 				if (cardVal < 17) {
 					for (int i = 2; i < 10; i++) {
 						dealer1.cards.add(deck1.shuffledDeck.remove(0));
-						cardVal += deck1.getCardValue(dealer1.getCards(i));
+						//cardVal += deck1.getCardValue(dealer1.getCards(i));
+						if(deck1.getCardValue(dealer1.getCards(0)) == 11 || deck1.getCardValue(dealer1.getCards(1)) == 11 || deck1.getCardValue(dealer1.getCards(2)) == 11)
+						{
+							if(deck1.getCardValue(dealer1.getCards(i)) == 11)
+							{
+								cardVal += 1;
+							}
+							else if(cardVal + deck1.getCardValue(dealer1.getCards(i)) > 21 && count == 0)
+							{
+								cardVal -= 10;
+								cardVal += deck1.getCardValue(dealer1.getCards(i));
+								count++;
+							}
+							else
+							{
+								cardVal += deck1.getCardValue(dealer1.getCards(i));
+							}
+						}
+						else if(deck1.getCardValue(dealer1.getCards(i)) == 11)
+						{
+							if(cardVal + 11 > 21)
+							{
+								cardVal += 1;
+							}
+							else
+							{
+								cardVal += 11;
+							}
+						}
+						else
+						{
+							cardVal += deck1.getCardValue(dealer1.getCards(i));
+						}
+						//cardVal += deck1.getCardValue(dealer1.getCards(i));
 						pCardValue.setText("Dealer's value: " + cardVal);
 						if (cardVal > 17) {
 							dealerVal = cardVal;
