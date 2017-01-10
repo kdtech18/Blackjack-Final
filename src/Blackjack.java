@@ -159,7 +159,6 @@ public class Blackjack extends JFrame implements ActionListener {
 					playerTurn.setText("Dealer's turn");
 					dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
 					cardVal = 0;
-
 					cardVal += deck1.getCardValue(dealer1.getCards(0)) + deck1.getCardValue(dealer1.getCards(1));
 					pCardValue.setText("Dealer's value: " + cardVal);
 					if (cardVal < 17) {
@@ -390,7 +389,6 @@ public class Blackjack extends JFrame implements ActionListener {
 		if (source == hit) {
 			if (playerNum == 1) {
 				players.addP1Card(deck1.shuffledDeck.remove(0));
-
 				players.addP1ImageCard(deck1.imageDeck.remove(0));
 				playerCards.add(new JButton(players.getP1ImageCards(players.p1Cards.size() - 1)));
 				southPnl.add(playerCards.get(playerCards.size() - 1));
@@ -403,8 +401,8 @@ public class Blackjack extends JFrame implements ActionListener {
 					}
 					else if(cardVal + deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1)) > 21 && count == 0)
 					{
-						cardVal -= 10;
 						cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size()-1));
+						cardVal -= 10;
 						count++;
 					}
 					else
@@ -423,8 +421,7 @@ public class Blackjack extends JFrame implements ActionListener {
 						cardVal += 11;
 					}
 				}
-				else if(deck1.getCardValue(players.getP1Cards(players.p2Cards.size())) - 1 != 11 && deck1.getCardValue(players.getP1Cards(0)) != 11 && deck1.getCardValue(players.getP1Cards(1)) != 11)
-				{
+				else{
 					cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
 				}
 
@@ -454,8 +451,8 @@ public class Blackjack extends JFrame implements ActionListener {
 					}
 					else if(cardVal + deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1)) > 21 && count == 0)
 					{
-						cardVal -= 10;
 						cardVal += deck1.getCardValue(players.getP2Cards(players.p2Cards.size()-1));
+						cardVal -= 10;
 						count++;
 					}
 					else
@@ -505,8 +502,8 @@ public class Blackjack extends JFrame implements ActionListener {
 					}
 					else if(cardVal + deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1)) > 21 && count == 0)
 					{
-						cardVal -= 10;
 						cardVal += deck1.getCardValue(players.getP3Cards(players.p3Cards.size()-1));
+						cardVal -= 10;
 						count++;
 					}
 					else
@@ -557,8 +554,8 @@ public class Blackjack extends JFrame implements ActionListener {
 					}
 					else if(cardVal + deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1)) > 21 && count == 0)
 					{
-						cardVal -= 10;
 						cardVal += deck1.getCardValue(players.getP4Cards(players.p4Cards.size()-1));
+						cardVal -= 10;
 						count++;
 					}
 					else
@@ -666,6 +663,8 @@ public class Blackjack extends JFrame implements ActionListener {
 				hit.setEnabled(false);
 				stand.setEnabled(false);
 				dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
+				pCardValue.setText("Dealer Wins");
+				playerTurn.setText("The Dealer checked, and He Won");
 				Timer timer = new Timer(delay, timerAction);
 				timer.setRepeats(false);
 				timer.start();
