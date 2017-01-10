@@ -41,6 +41,10 @@ public class Blackjack extends JFrame implements ActionListener {
 	String numPlayers;
 	int playerNum = 1;
 	int dealerVal;
+	int player1Val;
+	int player2Val;
+	int player3Val;
+	int player4Val;
 	JLabel playerTurn = new JLabel("Player " + playerNum + "'s Cards");
 	JLabel dealer = new JLabel("Dealer");
 	JLabel pCardValue = new JLabel("Total Value: " + cardVal);
@@ -158,6 +162,14 @@ public class Blackjack extends JFrame implements ActionListener {
 							}
 						}
 					}
+					if(cardVal == 21)
+					{
+						pCardValue.setText("Dealer Gets BlackJack, You Lose");
+					}
+					if(cardVal > 21)
+					{
+						pCardValue.setText("Dealer Busts: " + cardVal);
+					}
 
 					Hopeful please = new Hopeful(5);
 
@@ -199,6 +211,14 @@ public class Blackjack extends JFrame implements ActionListener {
 							}
 						}
 					}
+					if(cardVal == 21)
+					{
+						pCardValue.setText("Dealer Gets BlackJack, You Lose");
+					}
+					if(cardVal > 21)
+					{
+						pCardValue.setText("Dealer Busts: " + cardVal);
+					}
 
 					Hopeful please = new Hopeful(5);
 
@@ -218,6 +238,7 @@ public class Blackjack extends JFrame implements ActionListener {
 					}
 				}
 			} else if (playerNum == 5) {
+				//player4Val = cardVal;
 				hit.setEnabled(false);
 				stand.setEnabled(false);
 				playerTurn.setText("Dealer's turn");
@@ -235,6 +256,14 @@ public class Blackjack extends JFrame implements ActionListener {
 							break;
 						}
 					}
+				}
+				if(cardVal == 21)
+				{
+					pCardValue.setText("Dealer Gets BlackJack, You Lose");
+				}
+				if(cardVal > 21)
+				{
+					pCardValue.setText("Dealer Busts: " + cardVal);
 				}
 
 				Hopeful please = new Hopeful(5);
@@ -255,7 +284,7 @@ public class Blackjack extends JFrame implements ActionListener {
 					else
 						cardVal += 1;
 				} else
-					cardVal += deck1.getCardValue(players.getP1Cards(2));
+					cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
 
 				//cardVal += deck1.getCardValue(players.getP1Cards(players.p1Cards.size() - 1));
 
@@ -276,10 +305,10 @@ public class Blackjack extends JFrame implements ActionListener {
 				players.addP2Card(deck1.shuffledDeck.remove(0));
 				players.addP2ImageCard(deck1.imageDeck.remove(0));
 				playerCards.add(new JButton(players.getP2ImageCards(players.p2Cards.size() - 1)));
-				cardVal += deck1.getCardValue(players.getP2Cards(players.p1Cards.size() - 1));
+				//cardVal += deck1.getCardValue(players.getP2Cards(players.p1Cards.size() - 1));
 				southPnl.add(playerCards.get(playerCards.size() - 1));
 				revalidate();
-				//cardVal+= deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
+				cardVal+= deck1.getCardValue(players.getP2Cards(players.p2Cards.size() - 1));
 
 				pCardValue.setText("Total Value: " + cardVal);
 				if (checkWin(cardVal, playerNum)) {
@@ -294,10 +323,10 @@ public class Blackjack extends JFrame implements ActionListener {
 				players.addP3Card(deck1.shuffledDeck.remove(0));
 				players.addP3ImageCard(deck1.imageDeck.remove(0));
 				playerCards.add(new JButton(players.getP3ImageCards(players.p3Cards.size() - 1)));
-				cardVal += deck1.getCardValue(players.getP3Cards(players.p1Cards.size() - 1));
+				//cardVal += deck1.getCardValue(players.getP3Cards(players.p1Cards.size() - 1));
 				southPnl.add(playerCards.get(playerCards.size() - 1));
 				revalidate();
-				//cardVal+= deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1));
+				cardVal+= deck1.getCardValue(players.getP3Cards(players.p3Cards.size() - 1));
 
 				pCardValue.setText("Total Value: " + cardVal);
 				if (checkWin(cardVal, playerNum)) {
@@ -312,10 +341,10 @@ public class Blackjack extends JFrame implements ActionListener {
 				players.addP4Card(deck1.shuffledDeck.remove(0));
 				players.addP4ImageCard(deck1.imageDeck.remove(0));
 				playerCards.add(new JButton(players.getP4ImageCards(players.p4Cards.size() - 1)));
-				cardVal += deck1.getCardValue(players.getP4Cards(players.p1Cards.size() - 1));
+				//cardVal += deck1.getCardValue(players.getP4Cards(players.p1Cards.size() - 1));
 				southPnl.add(playerCards.get(playerCards.size() - 1));
 				revalidate();
-				//cardVal+= deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1));
+				cardVal+= deck1.getCardValue(players.getP4Cards(players.p4Cards.size() - 1));
 
 				pCardValue.setText("Total Value: " + cardVal);
 				if (checkWin(cardVal, playerNum)) {
