@@ -162,11 +162,7 @@ public class Blackjack extends JFrame implements ActionListener {
 					pCardValue.setText("Dealer's value: " + cardVal);
 					if (cardVal < 17) {
 						for (int i = 2; i < 10; i++) {
-							dealer1.cards.add(deck1.shuffledDeck.remove(0));
-							dealer1.imageCards.add(deck1.imageDeck.remove(0));
-							dealerCards.add(new JButton(deck1.imageDeck.get(i)));
-							centerPnl.add(dealerCards.get(i));
-							revalidate();
+
 							//cardVal += deck1.getCardValue(dealer1.getCards(i));
 							if(deck1.getCardValue(dealer1.getCards(0)) == 11 || deck1.getCardValue(dealer1.getCards(1)) == 11 || deck1.getCardValue(dealer1.getCards(2)) == 11)
 							{
@@ -200,6 +196,11 @@ public class Blackjack extends JFrame implements ActionListener {
 							{
 								cardVal += deck1.getCardValue(dealer1.getCards(i));
 							}
+							dealer1.cards.add(deck1.shuffledDeck.remove(0));
+							dealer1.imageCards.add(deck1.imageDeck.remove(0));
+							dealerCards.add(new JButton(deck1.imageDeck.get(i)));
+							centerPnl.add(dealerCards.get(i));
+							revalidate();
 							//cardVal += deck1.getCardValue(dealer1.getCards(i));
 							pCardValue.setText("Dealer's value: " + cardVal);
 							if (cardVal > 17) {
@@ -254,6 +255,7 @@ public class Blackjack extends JFrame implements ActionListener {
 							//cardVal += deck1.getCardValue(dealer1.getCards(i));
 							if(deck1.getCardValue(dealer1.getCards(0)) == 11 || deck1.getCardValue(dealer1.getCards(1)) == 11 || deck1.getCardValue(dealer1.getCards(2)) == 11)
 							{
+
 								if(deck1.getCardValue(dealer1.getCards(i)) == 11)
 								{
 									cardVal += 1;
@@ -284,6 +286,11 @@ public class Blackjack extends JFrame implements ActionListener {
 							{
 								cardVal += deck1.getCardValue(dealer1.getCards(i));
 							}
+							dealer1.cards.add(deck1.shuffledDeck.remove(0));
+							dealer1.imageCards.add(deck1.imageDeck.remove(0));
+							dealerCards.add(new JButton(deck1.imageDeck.get(i)));
+							centerPnl.add(dealerCards.get(i));
+							revalidate();
 							//cardVal += deck1.getCardValue(dealer1.getCards(i));
 							pCardValue.setText("Dealer's value: " + cardVal);
 							if (cardVal > 17) {
@@ -331,7 +338,7 @@ public class Blackjack extends JFrame implements ActionListener {
 				pCardValue.setText("Dealer's value: " + cardVal);
 				if (cardVal < 17) {
 					for (int i = 2; i < 10; i++) {
-						dealer1.cards.add(deck1.shuffledDeck.remove(0));
+
 						//cardVal += deck1.getCardValue(dealer1.getCards(i));
 						if(deck1.getCardValue(dealer1.getCards(0)) == 11 || deck1.getCardValue(dealer1.getCards(1)) == 11 || deck1.getCardValue(dealer1.getCards(2)) == 11)
 						{
@@ -365,12 +372,18 @@ public class Blackjack extends JFrame implements ActionListener {
 						{
 							cardVal += deck1.getCardValue(dealer1.getCards(i));
 						}
+						dealer1.cards.add(deck1.shuffledDeck.remove(0));
+						dealer1.imageCards.add(deck1.imageDeck.remove(0));
+						dealerCards.add(new JButton(deck1.imageDeck.get(i)));
+						centerPnl.add(dealerCards.get(i));
+						revalidate();
 						//cardVal += deck1.getCardValue(dealer1.getCards(i));
 						pCardValue.setText("Dealer's value: " + cardVal);
 						if (cardVal > 17) {
 							dealerVal = cardVal;
 							break;
 						}
+
 					}
 				}
 				if(cardVal == 21)
