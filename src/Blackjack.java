@@ -18,7 +18,7 @@ public class Blackjack extends JFrame implements ActionListener {
 	JPanel southPnl = new JPanel();
 	JPanel eastPnl = new JPanel();
 	JPanel westPnl = new JPanel();
-
+	JPanel northPnl = new JPanel();
 
 	GridLayout playerInfoLayout = new GridLayout(2, 1, 1, 1);
 	GridLayout eastLayout = new GridLayout(1, 2, 1, 1);
@@ -96,16 +96,19 @@ public class Blackjack extends JFrame implements ActionListener {
 		westPnl.add(playerTurn);
 		westPnl.add(pCardValue);
 
+		centerPnl.add(dealer);
+
 		addCardButtons(playerCards, southPnl);
 		addCardButtons(dealerCards, centerPnl);
 
-		centerPnl.add(dealer);
+
 		dealer.setFont(dealerFont);
 
 		mainPnl.add(centerPnl, BorderLayout.CENTER);
 		mainPnl.add(eastPnl, BorderLayout.EAST);
 		mainPnl.add(southPnl, BorderLayout.SOUTH);
 		mainPnl.add(westPnl, BorderLayout.WEST);
+
 
 		setStart();
 
