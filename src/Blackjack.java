@@ -664,7 +664,41 @@ public class Blackjack extends JFrame implements ActionListener {
 				stand.setEnabled(false);
 				dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
 				pCardValue.setText("Dealer Wins");
-				playerTurn.setText("The Dealer checked, and He Won");
+				if(deck1.getCardValue(players.getP1Cards(0)) + deck1.getCardValue(players.getP1Cards(1)) == 21);
+				{
+
+				}
+				if(numPlayers.equals("2")) {
+					if (deck1.getCardValue(players.getP2Cards(0)) + deck1.getCardValue(players.getP2Cards(1)) == 21) ;
+					{
+
+					}
+				}
+				else if(numPlayers.equals("3")) {
+					if (deck1.getCardValue(players.getP2Cards(0)) + deck1.getCardValue(players.getP2Cards(1)) == 21) ;
+					{
+
+					}
+					if(deck1.getCardValue(players.getP3Cards(0)) + deck1.getCardValue(players.getP3Cards(1)) == 21);
+					{
+
+					}
+				}
+				else if(numPlayers.equals("4")) {
+					if (deck1.getCardValue(players.getP2Cards(0)) + deck1.getCardValue(players.getP2Cards(1)) == 21) ;
+					{
+
+					}
+					if(deck1.getCardValue(players.getP3Cards(0)) + deck1.getCardValue(players.getP3Cards(1)) == 21);
+					{
+
+					}
+					if(deck1.getCardValue(players.getP4Cards(0)) + deck1.getCardValue(players.getP4Cards(1)) == 21);
+					{
+
+					}
+				}
+
 				Timer timer = new Timer(delay, timerAction);
 				timer.setRepeats(false);
 				timer.start();
@@ -690,7 +724,8 @@ public class Blackjack extends JFrame implements ActionListener {
 		}
 
 		pCardValue.setText("Total Value: " + cardVal);
-		if (checkWin(cardVal, playerNum) || checkBust(cardVal, playerNum)) {
+		if (checkWin(cardVal, playerNum)) {
+			pCardValue.setText("BlackJack!");
 			hit.setEnabled(false);
 		}
 	}
