@@ -9,14 +9,9 @@
  import java.awt.event.ActionListener;
  import java.awt.event.ActionEvent;
  //swing's
- import javax.swing.JFrame;
- import javax.swing.JPanel;
- import javax.swing.JButton;
- import javax.swing.JLabel;
- import javax.swing.JComboBox;
- import javax.swing.BoxLayout;
- 
- public class BlackJackEnd extends JFrame implements ActionListener
+ import javax.swing.*;
+
+public class BlackJackEnd extends JFrame implements ActionListener
  {
  		BorderLayout border = new BorderLayout(5,5);
 	//Pannels
@@ -53,13 +48,12 @@
 	public BlackJackEnd(Player players)
 	{
 	
-		
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setSize(450,450);
 		setVisible(true);
 		setLocationRelativeTo(null);
 
 		pressMe2.addActionListener(this);
-		
 
 		//main panel
 		add(mainPnl);

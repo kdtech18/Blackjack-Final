@@ -33,17 +33,13 @@ public class Blackjack extends JFrame implements ActionListener {
 	boolean[] playersWon = new boolean[4];
 	boolean[] playersBust = new boolean[4];
 
-	int aces = 0;
 	int count = 0;
-	int subtract = 0;
+
 	int cardVal;
 	String numPlayers;
 	int playerNum = 1;
 	int dealerVal;
-	int player1Val;
-	int player2Val;
-	int player3Val;
-	int player4Val;
+
 	JLabel playerTurn = new JLabel("Player " + playerNum + "'s Cards");
 	JLabel dealer = new JLabel("Dealer");
 	JLabel pCardValue = new JLabel("Total Value: " + cardVal);
@@ -63,9 +59,9 @@ public class Blackjack extends JFrame implements ActionListener {
 		{
 			dispose();
 			BlackJackEnd gui = new BlackJackEnd(players);
-
 		}
 	};
+
 	Player players = new Player();
 	Deck deck1 = new Deck();
 	Dealer dealer1 = new Dealer();
@@ -164,6 +160,10 @@ public class Blackjack extends JFrame implements ActionListener {
 					if (cardVal < 17) {
 						for (int i = 2; i < 10; i++) {
 							dealer1.cards.add(deck1.shuffledDeck.remove(0));
+							dealer1.imageCards.add(deck1.imageDeck.remove(0));
+							dealerCards.add(new JButton(deck1.imageDeck.get(i)));
+							centerPnl.add(dealerCards.get(i));
+							revalidate();
 							//cardVal += deck1.getCardValue(dealer1.getCards(i));
 							if(deck1.getCardValue(dealer1.getCards(0)) == 11 || deck1.getCardValue(dealer1.getCards(1)) == 11 || deck1.getCardValue(dealer1.getCards(2)) == 11)
 							{
