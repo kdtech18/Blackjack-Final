@@ -8,12 +8,8 @@
  import java.awt.event.ActionListener;
  import java.awt.event.ActionEvent;
  //swing's
- import javax.swing.JFrame;
- import javax.swing.JPanel;
- import javax.swing.JButton;
- import javax.swing.JLabel;
- import javax.swing.JComboBox;
- 
+ import javax.swing.*;
+
 
 public class BlackJackStart extends JFrame implements ActionListener
 {
@@ -39,7 +35,7 @@ public class BlackJackStart extends JFrame implements ActionListener
 	public BlackJackStart()
 	{
 	
-		
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setSize(450,450);
 		setVisible(true);
 		setLocationRelativeTo(null);
