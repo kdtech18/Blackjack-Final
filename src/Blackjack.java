@@ -681,6 +681,7 @@ public class Blackjack extends JFrame implements ActionListener {
 				stand.setEnabled(false);
 				dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
 				pCardValue.setText("Dealer Wins");
+				playerTurn.setText("Dealer's turn");
 				if(deck1.getCardValue(players.getP1Cards(0)) + deck1.getCardValue(players.getP1Cards(1)) == 21);
 				{
 
