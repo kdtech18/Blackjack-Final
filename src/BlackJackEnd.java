@@ -96,7 +96,23 @@ public class BlackJackEnd extends JFrame implements ActionListener
 
 			//east panel
 			eastPnl.setLayout(new BoxLayout(eastPnl, BoxLayout.Y_AXIS));
-			if(dealer1.cardValue > players)
+			if(dealer1.cardValue > players.player1Val && dealer1.cardValue > players.player2Val && dealer1.cardValue > players.player3Val && dealer1.cardValue > players.player4Val && dealer1.cardValue < 22)
+			{
+				if(players.playerNumber.equals("2")) {
+					if (players.player1Val > 21 && players.player2Val > 21) {
+						eastPnl.add(win);
+					}
+				}
+				if(dealer1.cardValue == players.player1Val || dealer1.cardValue == players.player2Val || dealer1.cardValue == players.player3Val || dealer1.cardValue == players.player4Val)
+				{
+					eastPnl.add(tie);
+				}
+				eastPnl.add(win);
+			}
+			else
+			{
+				eastPnl.add(loss);
+			}
 			if(players.player1Val > dealer1.cardValue && players.player1Val < 22)
 			{
 				eastPnl.add(win);
@@ -105,7 +121,7 @@ public class BlackJackEnd extends JFrame implements ActionListener
 			{
 				eastPnl.add(tie);
 			}
-			else if(players.player1Val < dealer1.cardValue || players.player1Val > 21)
+			else
 			{
 				eastPnl.add(loss);
 			}
@@ -117,7 +133,7 @@ public class BlackJackEnd extends JFrame implements ActionListener
 			{
 				eastPnl.add(tie);
 			}
-			else if(players.player2Val < dealer1.cardValue || players.player2Val > 21)
+			else
 			{
 				eastPnl.add(loss);
 			}
