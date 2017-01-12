@@ -7,11 +7,17 @@ public class TestWinBJ extends JFrame implements ActionListener
 	//put in black jack start
 	
 	int bet1 = 0;
- 	int bet2 = 0; 	int bet3 = 0;
+ 	int bet2 = 0;
+	int bet3 = 0;
  	int bet4 = 0;
  	
+	int totalCoin1 = 100;
+	int totalCoin2 = 100;
+	int totalCoin3 = 100;
+	int totalCoin4 = 100;	
+	
  	JLabel [] betting = {"Place Your Bets!"};
-	String[] betValue = {"5","10","20","30","40","50","All In"}; 
+	String [] betValue = {"5","10","20","30","40","50","All In"}; 
 	//combos should not be able to select a value untill the num players is selected.
 	JComboBox player1 = new JComboBox(betValue);
 	JComboBox player2 = new JComboBox(betValue);
@@ -82,7 +88,7 @@ public class TestWinBJ extends JFrame implements ActionListener
 					break;
 				case "50" ; bet2 = 50;
 					break;
-				case "all" ; bet2 = totalCoin1;
+				case "all" ; bet2 = totalCoin2;
 					break;
 				default; bet2 = 5;
 			}
@@ -105,7 +111,7 @@ public class TestWinBJ extends JFrame implements ActionListener
 					break;
 				case "50" ; bet3 = 50;
 					break;
-				case "all" ; bet3 = totalCoin1;
+				case "all" ; bet3 = totalCoin3;
 					break;
 				default; bet3 = 5;
 			}
@@ -128,7 +134,7 @@ public class TestWinBJ extends JFrame implements ActionListener
 					break;
 				case "50" ; bet4 = 50;
 					break;
-				case "all" ; bet4 = totalCoin1;
+				case "all" ; bet4 = totalCoin4;
 					break;
 				default; bet4 = 5;
 			}
