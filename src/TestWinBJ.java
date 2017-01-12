@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
- 
+/*
 public class TestWinBJ extends JFrame implements ActionListener
 {
 	//put in black jack start
@@ -146,5 +146,4 @@ public class TestWinBJ extends JFrame implements ActionListener
 
 	
 }
-			
-			
+*/
