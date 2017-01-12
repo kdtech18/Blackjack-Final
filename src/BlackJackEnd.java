@@ -96,6 +96,7 @@ public class BlackJackEnd extends JFrame implements ActionListener
 
 			//east panel
 			eastPnl.setLayout(new BoxLayout(eastPnl, BoxLayout.Y_AXIS));
+			if(dealer1.cardValue > players)
 			if(players.player1Val > dealer1.cardValue && players.player1Val < 22)
 			{
 				eastPnl.add(win);
