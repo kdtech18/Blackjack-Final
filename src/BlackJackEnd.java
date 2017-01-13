@@ -42,7 +42,7 @@ public class BlackJackEnd extends JFrame implements ActionListener
 	JLabel space8 = new JLabel("          ");
 	JLabel space9 = new JLabel("          ");
 
-
+	Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 
 
 	//Button
@@ -53,13 +53,26 @@ public class BlackJackEnd extends JFrame implements ActionListener
 		//JLabels
 		JLabel player1Value = new JLabel(players.player1Val + "");
 		JLabel player2Value = new JLabel(players.player2Val + "");
-		JLabel player3Value = new JLabel(players.player3Val +"");
-		JLabel player4Value = new JLabel(players.player4Val +"");
-		JLabel dealerValue = new JLabel (dealer1.cardValue +"");
+		JLabel player3Value = new JLabel(players.player3Val + "");
+		JLabel player4Value = new JLabel(players.player4Val + "");
+		JLabel dealerValue = new JLabel (dealer1.cardValue + "");
 		JLabel win = new JLabel("Winner");
 		JLabel tie = new JLabel("Tie");
 		JLabel loss = new JLabel("Loser");
-
+		player1Value.setFont(font);
+		player2Value.setFont(font);
+		player3Value.setFont(font);
+		player4Value.setFont(font);
+		dealerValue.setFont(font);
+		pressMe2.setFont(font);
+		dealer.setFont(font);
+		player1.setFont(font);
+		player2.setFont(font);
+		player3.setFont(font);
+		player4.setFont(font);
+		titleP.setFont(font);
+		titleCV.setFont(font);
+		
 		add(mainPnl);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setSize(450,450);
@@ -74,17 +87,17 @@ public class BlackJackEnd extends JFrame implements ActionListener
 		mainPnl.setLayout(border);
 
 		// north panel
-		northPnl.add(titleP);
+		westPnl.add(titleP);
 		northPnl.add(space1);
 		northPnl.add(space2);
 		northPnl.add(space3);
 
-		northPnl.add(titleCV);
+		eastPnl.add(titleCV);
 		northPnl.add(space4);
 		northPnl.add(space5);
 		northPnl.add(space6);
 
-		northPnl.add(stats);
+		
 		northPnl.add(space7);
 		northPnl.add(space8);
 		northPnl.add(space9);
@@ -96,150 +109,8 @@ public class BlackJackEnd extends JFrame implements ActionListener
 
 		//east panel
 		eastPnl.setLayout(new BoxLayout(eastPnl, BoxLayout.Y_AXIS));
-		if(players.playerNumber.equals("2"))
-		{
-			if(dealer1.cardValue > 21)
-			{
-				eastPnl.add(loss);
-			}
-			else if(dealer1.cardValue > players.player1Val && dealer1.cardValue > players.player2Val && dealer1.cardValue < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(players.player1Val > 21 && players.player2Val > 21 && dealer1.cardValue < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(dealer1.cardValue == players.player1Val && dealer1.cardValue > players.player2Val && dealer1.cardValue < 22)
-			{
-				eastPnl.add(tie);
-			}
-			else if(dealer1.cardValue == players.player2Val && dealer1.cardValue > players.player1Val && dealer1.cardValue < 22)
-			{
-				eastPnl.add(tie);
-			}
-
-		}
-		if(dealer1.cardValue < 22) {
-			if (players.playerNumber.equals("2")) {
-				if (players.player1Val > 21 && players.player2Val > 21) {
-					eastPnl.add(win);
-				}
-			} else if (players.playerNumber.equals("3")) {
-				if (players.player1Val > 21 && players.player2Val > 21 && players.player3Val > 21) {
-					eastPnl.add(win);
-				}
-			} else if (players.playerNumber.equals("4")) {
-				if (players.player1Val > 21 && players.player2Val > 21 && players.player3Val > 21 && players.player4Val > 21) {
-					eastPnl.add(win);
-				}
-			}
-		}
-		else {
-				eastPnl.add(loss);
-			}
-		if(players.playerNumber.equals("2")) {
-			if(players.player1Val > dealer1.cardValue && players.player1Val < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(players.player1Val == dealer1.cardValue && players.player1Val < 22)
-			{
-				eastPnl.add(tie);
-			}
-			else
-			{
-				eastPnl.add(loss);
-			}
-			if (players.player2Val > dealer1.cardValue && players.player2Val < 22) {
-				eastPnl.add(win);
-			} else if (players.player2Val == dealer1.cardValue && players.player2Val < 22) {
-				eastPnl.add(tie);
-			} else {
-				eastPnl.add(loss);
-			}
-		}
-		if(players.playerNumber.equals("3"))
-		{
-			if(players.player1Val > dealer1.cardValue && players.player1Val < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(players.player1Val == dealer1.cardValue && players.player1Val < 22)
-			{
-				eastPnl.add(tie);
-			}
-			else
-			{
-				eastPnl.add(loss);
-			}
-			if (players.player2Val > dealer1.cardValue && players.player2Val < 22) {
-				eastPnl.add(win);
-			} else if (players.player2Val == dealer1.cardValue && players.player2Val < 22) {
-				eastPnl.add(tie);
-			} else {
-				eastPnl.add(loss);
-			}
-			if(players.player3Val > dealer1.cardValue && players.player3Val < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(players.player3Val == dealer1.cardValue && players.player3Val < 22)
-			{
-				eastPnl.add(tie);
-			}
-			else if(players.player3Val < dealer1.cardValue || players.player3Val > 21)
-			{
-				eastPnl.add(loss);
-			}
-		}
-		else if(players.playerNumber.equals("4"))
-		{
-			if(players.player1Val > dealer1.cardValue && players.player1Val < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(players.player1Val == dealer1.cardValue && players.player1Val < 22)
-			{
-				eastPnl.add(tie);
-			}
-			else
-			{
-				eastPnl.add(loss);
-			}
-			if (players.player2Val > dealer1.cardValue && players.player2Val < 22) {
-				eastPnl.add(win);
-			} else if (players.player2Val == dealer1.cardValue && players.player2Val < 22) {
-				eastPnl.add(tie);
-			} else {
-				eastPnl.add(loss);
-			}
-			if(players.player3Val > dealer1.cardValue && players.player3Val < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(players.player3Val == dealer1.cardValue && players.player3Val < 22)
-			{
-				eastPnl.add(tie);
-			}
-			else if(players.player3Val < dealer1.cardValue || players.player3Val > 21)
-			{
-				eastPnl.add(loss);
-			}
-			if(players.player4Val > dealer1.cardValue && players.player4Val < 22)
-			{
-				eastPnl.add(win);
-			}
-			else if(players.player4Val == dealer1.cardValue && players.player4Val < 22)
-			{
-				eastPnl.add(tie);
-			}
-			else if(players.player4Val < dealer1.cardValue || players.player4Val > 21)
-			{
-				eastPnl.add(loss);
-			}
-		}
-
+		int pNum = Integer.parseInt(players.playerNumber);
+	
 
 		mainPnl.add(eastPnl, BorderLayout.EAST);
 		//west panel
@@ -259,18 +130,18 @@ public class BlackJackEnd extends JFrame implements ActionListener
 		mainPnl.add(westPnl, BorderLayout.WEST);
 
 		//center panel
-		centerPnl.setLayout(new BoxLayout(centerPnl, BoxLayout.Y_AXIS));
-		centerPnl.add(dealerValue);
-		centerPnl.add(player1Value);
-		centerPnl.add(player2Value);
+		
+		eastPnl.add(dealerValue);
+		eastPnl.add(player1Value);
+		eastPnl.add(player2Value);
 		if(players.playerNumber.equals("3")) {
-			centerPnl.add(player3Value);
+			eastPnl.add(player3Value);
 		}
 		else if(players.playerNumber.equals("4")) {
-			centerPnl.add(player3Value);
-			centerPnl.add(player4Value);
+			eastPnl.add(player3Value);
+			eastPnl.add(player4Value);
 		}
-		mainPnl.add(centerPnl, BorderLayout.CENTER);
+		mainPnl.add(eastPnl, BorderLayout.EAST);
 
 		validate();
 	}

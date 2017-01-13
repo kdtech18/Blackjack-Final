@@ -689,53 +689,13 @@ public class Blackjack extends JFrame implements ActionListener {
 		dealer1.imageCards.add(deck1.imageDeck.remove(0));
 
 		dealerCards.get(0).setIcon(dealer1.imageCards.get(0));
-		if (deck1.getCardValue(dealer1.getCards(0)) == 10 || deck1.getCardValue(dealer1.getCards(0)) == 11) {
-			cardVal = deck1.getCardValue(dealer1.getCards(0)) + deck1.getCardValue(dealer1.getCards(1));
-			if (cardVal == 21) {
-				hit.setEnabled(false);
-				stand.setEnabled(false);
-				dealerCards.get(1).setIcon(dealer1.imageCards.get(1));
-				pCardValue.setText("Dealer Wins");
-				if(deck1.getCardValue(players.getP1Cards(0)) + deck1.getCardValue(players.getP1Cards(1)) == 21);
-				{
-
-				}
-				if(numPlayers.equals("2")) {
-					if (deck1.getCardValue(players.getP2Cards(0)) + deck1.getCardValue(players.getP2Cards(1)) == 21) ;
-					{
-
-					}
-				}
-				else if(numPlayers.equals("3")) {
-					if (deck1.getCardValue(players.getP2Cards(0)) + deck1.getCardValue(players.getP2Cards(1)) == 21) ;
-					{
-
-					}
-					if(deck1.getCardValue(players.getP3Cards(0)) + deck1.getCardValue(players.getP3Cards(1)) == 21);
-					{
-
-					}
-				}
-				else if(numPlayers.equals("4")) {
-					if (deck1.getCardValue(players.getP2Cards(0)) + deck1.getCardValue(players.getP2Cards(1)) == 21) ;
-					{
-
-					}
-					if(deck1.getCardValue(players.getP3Cards(0)) + deck1.getCardValue(players.getP3Cards(1)) == 21);
-					{
-
-					}
-					if(deck1.getCardValue(players.getP4Cards(0)) + deck1.getCardValue(players.getP4Cards(1)) == 21);
-					{
-
-					}
-				}
-
+		
+			
 				Timer timer = new Timer(delay, timerAction);
 				timer.setRepeats(false);
 				timer.start();
-			}
-		}
+			
+		
 
 		// each player is given two cards face up
 
